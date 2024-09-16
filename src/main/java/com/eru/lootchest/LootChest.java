@@ -1,7 +1,14 @@
 package com.eru.lootchest;
 
+import com.eru.lootchest.item.CrystalSword;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +20,8 @@ public class LootChest implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	public static final Item CRYSTAL_SWORD = new CrystalSword();
+
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -20,5 +29,16 @@ public class LootChest implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
-	}
+
+		//registra la espada
+		Item crystal_sword = Registry.register(Registries.ITEM, new Identifier(MOD_ID, "crystal_sword"), CRYSTAL_SWORD);
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
+			entries.add(crystal_sword);
+		});
+
+		//registra el mod
+		BiomeLootMod.loadConfiguration();
+		ReloadCommand.register();
+		ChestLootHandler.registerEvent();
+    }
 }

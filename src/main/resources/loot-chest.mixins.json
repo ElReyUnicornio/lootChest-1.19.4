@@ -3,7 +3,8 @@
 	"package": "com.eru.lootchest.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"ChestBlockEntityMixin",
+		"ChestBlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

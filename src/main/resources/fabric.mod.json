@@ -3,9 +3,9 @@
 	"id": "loot-chest",
 	"version": "${version}",
 	"name": "loot chest",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Este es un mod que modifica los lottables de los cofres según su bioma",
 	"authors": [
-		"Me!"
+		"ElReyUnicornio"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
